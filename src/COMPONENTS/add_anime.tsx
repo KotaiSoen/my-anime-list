@@ -9,13 +9,17 @@ export default function AddAnime({setAnimeFunction}: {setAnimeFunction: any}) {
 
     const [addAnimeClicked, setAddAnimeClicked] = useState(false);
 
+    const createAnime = (anime: string) => {
+        setAnimeFunction(anime)
+        setAddAnimeClicked(false);
+        setAnime('');
+    }
+
     const addAnime = () => {
-        console.log('true');
         setAddAnimeClicked(true);
     }
 
     const closeAnime = () => {
-        console.log('false');
         setAddAnimeClicked(false);
     }
 
@@ -32,7 +36,7 @@ export default function AddAnime({setAnimeFunction}: {setAnimeFunction: any}) {
             {addAnimeClicked && 
                 <div className='flex items-center'>
                     <input value={anime} onChange={handleInputChange} className="bg-gray-200 text-black px-5 h-12 w-48 rounded-full flex justify-center items-center" type="text" />
-                    <button onClick={() => setAnimeFunction(anime)} className='w-16 h-12 border-2 border-white ml-4'>Add</button>
+                    <button onClick={() => createAnime(anime)} className='w-16 h-12 border-2 border-white ml-4 rounded-full'>Add</button>
                     <IoIosCloseCircleOutline className="cursor-pointer ml-4" size={30} onClick={closeAnime}/>
                 </div>
             }
