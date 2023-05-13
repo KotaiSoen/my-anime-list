@@ -10,7 +10,7 @@ export default async function handler(
             const { id } = req.query
             const delAnime = await prisma.anime.delete({
                 where: {
-                    id: id
+                    id: id![0]
                 }
             })
             res.status(200).json(delAnime);
